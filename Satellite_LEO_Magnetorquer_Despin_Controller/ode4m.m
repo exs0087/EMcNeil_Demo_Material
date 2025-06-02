@@ -1,9 +1,6 @@
 function Y = ode4m(odefun,tspan,y0,cmode,varargin)
 % ODE4M modified ODE4 fixed step size integrator
 % AE 6356 Spacecraft Attitude
-% Assignment 3 Problem 3
-% Glenn Lightsey Fall 2024
-% Edited: Erin McNeil, 10/2024
 %
 % Solve differential equations with a non-adaptive method of order 4.
 %   Y = ODE4(ODEFUN,TSPAN,Y0) with TSPAN = [T1, T2, T3, ... TN] integrates 

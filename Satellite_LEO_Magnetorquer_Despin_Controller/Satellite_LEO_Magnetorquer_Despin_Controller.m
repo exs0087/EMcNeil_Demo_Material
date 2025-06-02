@@ -1,12 +1,11 @@
 clear;close all;clc;
-%% AE 6356 - Homework 3
-% Problem 3
+%% AE 6356 - Satellite in LEO Magnetorquer Despin Controller
 
 % Author: Erin McNeil
 % Date: 09/23/24
 
 format longG
-%% part a
+%% Bdot control
 cmode = 1;
 tspan = [0:1:16000];
 w0 = [0; 0.2; 0.2]; % rad/s
@@ -27,10 +26,10 @@ grid on
 xlim([0 16000])
 ylim([-1 1])
 legend('q1','q2','q3','q4')
-title({'Erin McNeil: HW 3, Prob 3,a:','Quaternion Plot'});
+title({'Erin McNeil:','Quaternion Plot'});
 xlabel('time (s)')
 ylabel('quaternion values')
-saveas(gcf,'HW3_p3a_1','png')
+saveas(gcf,'quaternion_plot_cmode_1','png')
 
 figure; 
 plot(tsim,ysim(:,1),'r-*');
@@ -41,10 +40,10 @@ grid on
 xlim([0 16000])
 ylim([-0.004 0.004])
 legend('w1','w2','w3')
-title({'Erin McNeil: HW 3, Prob 3,a:','Angular Velocity Plot'});
+title({'Erin McNeil:','Angular Velocity Plot'});
 xlabel('time (s)')
 ylabel('angular velocity (rad/sec)')
-saveas(gcf,'HW3_p3a_2','png')
+saveas(gcf,'angular_velocity_plot_cmode_1','png')
 
 mag_w = zeros(length(tsim),1);
 for ii = 1:length(tsim)
@@ -57,10 +56,10 @@ plot(tsim,mag_w,'m-');
 grid on
 xlim([0 16000])
 legend('magnitude of angular velocity')
-title({'Erin McNeil: HW 3, Prob 3,a:', 'Magnitude of Angular Velocity Plot'});
+title({'Erin McNeil:', 'Magnitude of Angular Velocity Plot'});
 xlabel('time (s)')
 ylabel('magnitude of angular velocity (rad/sec)')
-saveas(gcf,'HW3_p3a_3','png')
+saveas(gcf,'magnitude_angular_velocity_cmode_1','png')
 
 mu = 398600; %km^3/s^2 = G*M
 Re = 6371; % km, Earth's radius
@@ -81,14 +80,14 @@ grid on
 xlim([0 16000])
 % ylim([-0.004 0.004])
 legend('mb1','mb2','mb3')
-title({'Erin McNeil: HW 3, Prob 3,a:','Magnetic Dipole Moment Plot'});
+title({'Erin McNeil:','Magnetic Dipole Moment Plot'});
 xlabel('time (s)')
 ylabel('Magnetic Dipole Moment (A*m^2)')
-saveas(gcf,'HW3_p3a_4','png')
+saveas(gcf,'magnetic_dipole_moment_plot_cmode_1','png')
 
 
 
-%% part b
+%% wxb control
 cmode = 2;
 tspan = [0:1:16000];
 w0 = [0; 0.2; 0.2]; % rad/s
@@ -109,10 +108,10 @@ grid on
 xlim([0 16000])
 ylim([-1 1])
 legend('q1','q2','q3','q4')
-title({'Erin McNeil: HW 3, Prob 3,b:','Quaternion Plot'});
+title({'Erin McNeil:','Quaternion Plot'});
 xlabel('time (s)')
 ylabel('quaternion values')
-saveas(gcf,'HW3_p3b_1','png')
+saveas(gcf,'quaternion_plot_cmode_2','png')
 
 figure; 
 plot(tsim,ysim(:,1),'r-*');
@@ -123,10 +122,10 @@ grid on
 xlim([0 16000])
 ylim([-0.004 0.004])
 legend('w1','w2','w3')
-title({'Erin McNeil: HW 3, Prob 3,b:','Angular Velocity Plot'});
+title({'Erin McNeil:','Angular Velocity Plot'});
 xlabel('time (s)')
 ylabel('angular velocity (rad/sec)')
-saveas(gcf,'HW3_p3b_2','png')
+saveas(gcf,'angular_velocity_plot_cmode_2','png')
 
 mag_w = zeros(length(tsim),1);
 for ii = 1:length(tsim)
@@ -139,10 +138,10 @@ plot(tsim,mag_w,'m-');
 grid on
 xlim([0 16000])
 legend('magnitude of angular velocity')
-title({'Erin McNeil: HW 3, Prob 3,b:', 'Magnitude of Angular Velocity Plot'});
+title({'Erin McNeil:', 'Magnitude of Angular Velocity Plot'});
 xlabel('time (s)')
 ylabel('magnitude of angular velocity (rad/sec)')
-saveas(gcf,'HW3_p3b_3','png')
+saveas(gcf,'magnitude_angular_velocity_cmode_2','png')
 
 mu = 398600; %km^3/s^2 = G*M
 Re = 6371; % km, Earth's radius
@@ -163,8 +162,8 @@ grid on
 xlim([0 16000])
 % ylim([-0.004 0.004])
 legend('mb1','mb2','mb3')
-title({'Erin McNeil: HW 3, Prob 3,b:','Magnetic Dipole Moment Plot'});
+title({'Erin McNeil:','Magnetic Dipole Moment Plot'});
 xlabel('time (s)')
 ylabel('Magnetic Dipole Moment (A*m^2)')
-saveas(gcf,'HW3_p3b_4','png')
+saveas(gcf,'magnetic_dipole_moment_plot_cmode_2','png')
 

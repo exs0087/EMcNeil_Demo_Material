@@ -5,9 +5,9 @@ function [latitude,longitude,altitude]=issorb(t)
 %
 % author: Erin McNeil
 
-alpha = 52*pi/180;  %% rad, hard coded inclination
-theta = -pi/2;  %% rad, hard coded initial latitude;
-altitude = 400; %% km, hard coded altitude
+alpha = 52*pi/180;  %% rad,  inclination
+theta = -pi/2;  %% rad,  initial latitude;
+altitude = 400; %% km, altitude
 
 mu = 398600; %km^3/s^2 = G*M
 Re = 6371; % km, Earth's radius
