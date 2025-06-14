@@ -31,7 +31,7 @@ This repository showcases a collection of advanced aerospace guidance, navigatio
 - **Description**: Simulates Earth’s magnetic field and uses a magnetorquer to despin a satellite in LEO.
 - **Focus**: B-dot controller, magnetic moment interaction, de-spin strategy.
 
-### ⚙️ Satellite Architecture – Python & C++ 
+### ⚙️ SatelliteSim – Python & C++ 
 - **Tools**: Python, C++, CMake
 - **Description**: Ongoing port of legacy MATLAB-based spacecraft control architecture into modern C++/Python for embedded or simulation applications.
 - **Focus**: Modular control design, simulation infrastructure, future Python toolkit.
