@@ -1,0 +1,4 @@
+/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles/control_algorithm.dir
+/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles/simulator.dir
+/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles/rebuild_cache.dir

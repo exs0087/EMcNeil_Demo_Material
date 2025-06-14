@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcontrol_algorithm.a CMakeFiles/control_algorithm.dir/firmware/control_algorithm.cpp.o
+/usr/bin/ranlib libcontrol_algorithm.a
