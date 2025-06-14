@@ -30,7 +30,7 @@ std::vector<double> loadIGRFCoeffs(double decimalYear) {
         throw std::runtime_error("Missing fields in coefs struct");
     }
 
-    // Read years into vector (MATLAB had a +10 offset in your code)
+    // Read years into vector
     std::vector<double> years(nEpochs);
     auto yearData = static_cast<double*>(yearsVar->data);
     for (size_t i = 0; i < nEpochs; ++i) {

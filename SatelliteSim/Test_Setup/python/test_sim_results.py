@@ -1,16 +1,4 @@
-import pytest
-import pandas as pd
 import numpy as np
-from pathlib import Path
-
-# locate the CSV under SatelliteSim/Test_Setup/cpp
-CSV_PATH = Path(__file__).parents[2] \
-           / "SatelliteSim" / "Test_Setup" / "cpp" / "sim_results.csv"
-
-@pytest.fixture(scope="module")
-def df():
-    assert CSV_PATH.exists(), f"CSV not found at: {CSV_PATH}"
-    return pd.read_csv(CSV_PATH)
 
 def test_columns(df):
     assert list(df.columns) == [
@@ -31,12 +19,16 @@ def test_initial_state(df):
     assert row0["q4"] == 1
 
 def test_quaternion_normalization(df):
-    norms = np.sqrt(df["q1"]**2 + df["q2"]**2 + df["q3"]**2 + df["q4"]**2)
+    norms = np.sqrt(
+        df["q1"]**2 + df["q2"]**2 + df["q3"]**2 + df["q4"]**2
+    )
     assert np.allclose(norms, 1.0, atol=1e-6)
 
 def test_B_field_magnitude(df):
     Bmag = np.sqrt(df["Bx"]**2 + df["By"]**2 + df["Bz"]**2)
+    # all finite
     assert np.isfinite(Bmag).all()
+    # within expected range
     assert (Bmag > 1e-9).all() and (Bmag < 1e-4).all()
 
 def test_zero_dipole(df):

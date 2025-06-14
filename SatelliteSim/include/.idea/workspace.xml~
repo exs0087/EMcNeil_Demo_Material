@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5e2ae3b2-8887-4e39-bd9b-229f155cc04c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/adcs_hal.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/Vec3.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/Vec4.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/Vec7.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/magnetic_field.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/ode4.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/igrf_loader.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/ode4.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/test_sim_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/IGRFLoader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/control_sim.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/euler_dynamics.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/eulerseqns2.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/eulerseqns2.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/igrf.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/igrf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/igrf_coeffs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/igrf_loader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/iss_orbit.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/iss_orbit.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/legendre.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/magnetic_field.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/ned2eci.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/ned2eci.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/include/ode4m.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/IGRFLoader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/bindings.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/control_sim.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/euler_dynamics.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/eulerseqns2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/eulerseqns2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/igrf.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/igrf.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/iss_orbit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/iss_orbit.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/legendre.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/magnetic_field.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/magnetic_field.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/ned2eci.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/ned2eci.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Satellite_Control_Simulation/cpp/src/ode4m.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/.idea/python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Satellite_Architecture/Test_Setup/python/test_kernels.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2025" />
+    <option name="minorVersion" value="1.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2yTKX9Mox1XSeOWDiNlyKLExE6c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5e2ae3b2-8887-4e39-bd9b-229f155cc04c" name="Changes" comment="" />
+      <created>1749853160327</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749853160327</updated>
+      <workItem from="1749853161813" duration="141000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

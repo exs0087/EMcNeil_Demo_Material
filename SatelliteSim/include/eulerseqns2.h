@@ -8,7 +8,7 @@
  * Computes the time‐derivative for the 7‐element state vector:
  *   [ ω₁, ω₂, ω₃, q₁, q₂, q₃, q₄ ]
  * Implements rigid‐body Euler + quaternion kinematics and calls into
- * your on‐board controller via the HAL.
+ * the on‐board controller via the HAL.
  */
 Vec7 eulerseqns2(double t, const Vec7& y);
 

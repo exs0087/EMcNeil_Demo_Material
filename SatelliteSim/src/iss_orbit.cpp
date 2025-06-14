@@ -4,7 +4,7 @@
 #include "Vec3.h"
 #include <cmath>
 
-// Port of your MATLAB issorb.m, but all in meters & SI units:
+// Port of the MATLAB issorb.m, but all in meters & SI units:
 Vec3 issOrbitECI(double t) {
     constexpr double pi       = 3.141592653589793;
     constexpr double incl     = 52.0 * pi / 180.0;   // inclination [rad]

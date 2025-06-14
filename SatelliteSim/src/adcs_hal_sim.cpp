@@ -14,7 +14,7 @@ extern "C" {
 
     void HAL_compute_control(const SensorReadings* sens,
                              ActuatorCommands*   act) {
-        // Call into your real embedded algorithm
+        // Call into the real embedded algorithm
         control_algorithm(sens, act);
     }
 
@@ -26,7 +26,7 @@ extern "C" {
     }
 
     void HAL_set_control_mode(ControlMode mode) {
-        // Route the sim’s mode switch into your firmware stub
+        // Route the sim’s mode switch into the firmware stub
         control_algorithm_set_mode(mode);
     }
 

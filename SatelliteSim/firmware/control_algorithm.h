@@ -9,7 +9,7 @@ extern "C" {
     /// Set the active control mode.  (Called from sim stub or CLI.)
     void control_algorithm_set_mode(ControlMode mode);
 
-    /// Your on‐board attitude control algorithm entry point.
+    ///  on‐board attitude control algorithm entry point.
     void control_algorithm(const SensorReadings* sens,
                            ActuatorCommands*   act);
 

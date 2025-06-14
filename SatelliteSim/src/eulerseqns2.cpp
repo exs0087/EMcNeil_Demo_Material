@@ -24,7 +24,7 @@ Vec7 eulerseqns2(double t, const Vec7& y) {
     sens.wx = w.x;  sens.wy = w.y;  sens.wz = w.z;
     sens.Bx = B_body.x;  sens.By = B_body.y;  sens.Bz = B_body.z;
 
-    // 4) Call your embedded control algorithm
+    // 4) Call the embedded control algorithm
     ActuatorCommands act{0,0,0};
     HAL_compute_control(&sens, &act);
 

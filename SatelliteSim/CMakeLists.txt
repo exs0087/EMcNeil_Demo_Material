@@ -30,11 +30,14 @@ add_executable(simulator
         src/ned2eci.cpp
         src/ode4.cpp
 )
+target_compile_definitions(simulator PRIVATE
+        OUTPUT_DIR=\"${PROJECT_SOURCE_DIR}/Test_Setup/cpp\"
+)
 target_include_directories(simulator PRIVATE
         ${PROJECT_SOURCE_DIR}/include    # for all our public headers
 )
 target_link_libraries(simulator PRIVATE
-        control_algorithm                # hook in your firmware lib
+        control_algorithm                # hook in the firmware lib
 )
 
 #
