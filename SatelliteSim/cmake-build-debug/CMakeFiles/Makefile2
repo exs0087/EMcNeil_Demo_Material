@@ -64,7 +64,9 @@ CMAKE_BINARY_DIR = /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug
 
 # The main recursive "all" target.
 all: CMakeFiles/control_algorithm.dir/all
+all: CMakeFiles/sim_core.dir/all
 all: CMakeFiles/simulator.dir/all
+all: CMakeFiles/test_bfield.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,7 +75,9 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/control_algorithm.dir/clean
+clean: CMakeFiles/sim_core.dir/clean
 clean: CMakeFiles/simulator.dir/clean
+clean: CMakeFiles/test_bfield.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -103,18 +107,45 @@ CMakeFiles/control_algorithm.dir/clean:
 .PHONY : CMakeFiles/control_algorithm.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/sim_core.dir
+
+# All Build rule for target.
+CMakeFiles/sim_core.dir/all: CMakeFiles/control_algorithm.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target sim_core"
+.PHONY : CMakeFiles/sim_core.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sim_core.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sim_core.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/sim_core.dir/rule
+
+# Convenience name for target.
+sim_core: CMakeFiles/sim_core.dir/rule
+.PHONY : sim_core
+
+# clean rule for target.
+CMakeFiles/sim_core.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/clean
+.PHONY : CMakeFiles/sim_core.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/simulator.dir
 
 # All Build rule for target.
 CMakeFiles/simulator.dir/all: CMakeFiles/control_algorithm.dir/all
+CMakeFiles/simulator.dir/all: CMakeFiles/sim_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target simulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=13,14 "Built target simulator"
 .PHONY : CMakeFiles/simulator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/simulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/simulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/simulator.dir/rule
@@ -127,6 +158,33 @@ simulator: CMakeFiles/simulator.dir/rule
 CMakeFiles/simulator.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/clean
 .PHONY : CMakeFiles/simulator.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_bfield.dir
+
+# All Build rule for target.
+CMakeFiles/test_bfield.dir/all: CMakeFiles/control_algorithm.dir/all
+CMakeFiles/test_bfield.dir/all: CMakeFiles/sim_core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=15,16 "Built target test_bfield"
+.PHONY : CMakeFiles/test_bfield.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_bfield.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_bfield.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/test_bfield.dir/rule
+
+# Convenience name for target.
+test_bfield: CMakeFiles/test_bfield.dir/rule
+.PHONY : test_bfield
+
+# clean rule for target.
+CMakeFiles/test_bfield.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/clean
+.PHONY : CMakeFiles/test_bfield.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

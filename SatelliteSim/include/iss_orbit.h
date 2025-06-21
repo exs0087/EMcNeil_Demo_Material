@@ -1,11 +1,11 @@
-// include/iss_orbit.h
 #pragma once
 
 #include "Vec3.h"
 
-/// Computes the satellite’s Earth-Centered Inertial (ECI) position
-/// for a circular orbit at time t.
-///
-/// @param t  Time since start of simulation [s]
-/// @returns  ECI position vector [x, y, z] in kilometers
+// Earth’s rotation rate [rad/s]
+inline constexpr double we = 7.2921150e-5;
+
+// Propagates a circular, inclined orbit into ECEF
 Vec3 issOrbitECI(double t);
+
+void issOrbitGeod(double t, double& lat, double& lon, double& alt_km);

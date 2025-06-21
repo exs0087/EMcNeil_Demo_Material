@@ -69,94 +69,10 @@ include CMakeFiles/simulator.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/simulator.dir/flags.make
 
-CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/adcs_hal_sim.cpp
-CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o -MF CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o.d -o CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/adcs_hal_sim.cpp
-
-CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/adcs_hal_sim.cpp > CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.i
-
-CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/adcs_hal_sim.cpp -o CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.s
-
-CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/eulerseqns2.cpp
-CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o -MF CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o.d -o CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/eulerseqns2.cpp
-
-CMakeFiles/simulator.dir/src/eulerseqns2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/eulerseqns2.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/eulerseqns2.cpp > CMakeFiles/simulator.dir/src/eulerseqns2.cpp.i
-
-CMakeFiles/simulator.dir/src/eulerseqns2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/eulerseqns2.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/eulerseqns2.cpp -o CMakeFiles/simulator.dir/src/eulerseqns2.cpp.s
-
-CMakeFiles/simulator.dir/src/igrf.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/igrf.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf.cpp
-CMakeFiles/simulator.dir/src/igrf.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/simulator.dir/src/igrf.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/igrf.cpp.o -MF CMakeFiles/simulator.dir/src/igrf.cpp.o.d -o CMakeFiles/simulator.dir/src/igrf.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf.cpp
-
-CMakeFiles/simulator.dir/src/igrf.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/igrf.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf.cpp > CMakeFiles/simulator.dir/src/igrf.cpp.i
-
-CMakeFiles/simulator.dir/src/igrf.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/igrf.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf.cpp -o CMakeFiles/simulator.dir/src/igrf.cpp.s
-
-CMakeFiles/simulator.dir/src/igrf_loader.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/igrf_loader.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf_loader.cpp
-CMakeFiles/simulator.dir/src/igrf_loader.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/simulator.dir/src/igrf_loader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/igrf_loader.cpp.o -MF CMakeFiles/simulator.dir/src/igrf_loader.cpp.o.d -o CMakeFiles/simulator.dir/src/igrf_loader.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf_loader.cpp
-
-CMakeFiles/simulator.dir/src/igrf_loader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/igrf_loader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf_loader.cpp > CMakeFiles/simulator.dir/src/igrf_loader.cpp.i
-
-CMakeFiles/simulator.dir/src/igrf_loader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/igrf_loader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/igrf_loader.cpp -o CMakeFiles/simulator.dir/src/igrf_loader.cpp.s
-
-CMakeFiles/simulator.dir/src/iss_orbit.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/iss_orbit.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/iss_orbit.cpp
-CMakeFiles/simulator.dir/src/iss_orbit.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/simulator.dir/src/iss_orbit.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/iss_orbit.cpp.o -MF CMakeFiles/simulator.dir/src/iss_orbit.cpp.o.d -o CMakeFiles/simulator.dir/src/iss_orbit.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/iss_orbit.cpp
-
-CMakeFiles/simulator.dir/src/iss_orbit.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/iss_orbit.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/iss_orbit.cpp > CMakeFiles/simulator.dir/src/iss_orbit.cpp.i
-
-CMakeFiles/simulator.dir/src/iss_orbit.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/iss_orbit.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/iss_orbit.cpp -o CMakeFiles/simulator.dir/src/iss_orbit.cpp.s
-
-CMakeFiles/simulator.dir/src/magnetic_field.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/magnetic_field.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/magnetic_field.cpp
-CMakeFiles/simulator.dir/src/magnetic_field.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/simulator.dir/src/magnetic_field.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/magnetic_field.cpp.o -MF CMakeFiles/simulator.dir/src/magnetic_field.cpp.o.d -o CMakeFiles/simulator.dir/src/magnetic_field.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/magnetic_field.cpp
-
-CMakeFiles/simulator.dir/src/magnetic_field.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/magnetic_field.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/magnetic_field.cpp > CMakeFiles/simulator.dir/src/magnetic_field.cpp.i
-
-CMakeFiles/simulator.dir/src/magnetic_field.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/magnetic_field.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/magnetic_field.cpp -o CMakeFiles/simulator.dir/src/magnetic_field.cpp.s
-
 CMakeFiles/simulator.dir/src/main.cpp.o: CMakeFiles/simulator.dir/flags.make
 CMakeFiles/simulator.dir/src/main.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/main.cpp
 CMakeFiles/simulator.dir/src/main.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/simulator.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simulator.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/main.cpp.o -MF CMakeFiles/simulator.dir/src/main.cpp.o.d -o CMakeFiles/simulator.dir/src/main.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/main.cpp
 
 CMakeFiles/simulator.dir/src/main.cpp.i: cmake_force
@@ -167,63 +83,19 @@ CMakeFiles/simulator.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/main.cpp -o CMakeFiles/simulator.dir/src/main.cpp.s
 
-CMakeFiles/simulator.dir/src/ned2eci.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/ned2eci.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ned2eci.cpp
-CMakeFiles/simulator.dir/src/ned2eci.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/simulator.dir/src/ned2eci.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/ned2eci.cpp.o -MF CMakeFiles/simulator.dir/src/ned2eci.cpp.o.d -o CMakeFiles/simulator.dir/src/ned2eci.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ned2eci.cpp
-
-CMakeFiles/simulator.dir/src/ned2eci.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/ned2eci.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ned2eci.cpp > CMakeFiles/simulator.dir/src/ned2eci.cpp.i
-
-CMakeFiles/simulator.dir/src/ned2eci.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/ned2eci.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ned2eci.cpp -o CMakeFiles/simulator.dir/src/ned2eci.cpp.s
-
-CMakeFiles/simulator.dir/src/ode4.cpp.o: CMakeFiles/simulator.dir/flags.make
-CMakeFiles/simulator.dir/src/ode4.cpp.o: /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ode4.cpp
-CMakeFiles/simulator.dir/src/ode4.cpp.o: CMakeFiles/simulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/simulator.dir/src/ode4.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simulator.dir/src/ode4.cpp.o -MF CMakeFiles/simulator.dir/src/ode4.cpp.o.d -o CMakeFiles/simulator.dir/src/ode4.cpp.o -c /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ode4.cpp
-
-CMakeFiles/simulator.dir/src/ode4.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simulator.dir/src/ode4.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ode4.cpp > CMakeFiles/simulator.dir/src/ode4.cpp.i
-
-CMakeFiles/simulator.dir/src/ode4.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simulator.dir/src/ode4.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/ees00/Demo_Github/SatelliteSim/src/ode4.cpp -o CMakeFiles/simulator.dir/src/ode4.cpp.s
-
 # Object files for target simulator
 simulator_OBJECTS = \
-"CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o" \
-"CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o" \
-"CMakeFiles/simulator.dir/src/igrf.cpp.o" \
-"CMakeFiles/simulator.dir/src/igrf_loader.cpp.o" \
-"CMakeFiles/simulator.dir/src/iss_orbit.cpp.o" \
-"CMakeFiles/simulator.dir/src/magnetic_field.cpp.o" \
-"CMakeFiles/simulator.dir/src/main.cpp.o" \
-"CMakeFiles/simulator.dir/src/ned2eci.cpp.o" \
-"CMakeFiles/simulator.dir/src/ode4.cpp.o"
+"CMakeFiles/simulator.dir/src/main.cpp.o"
 
 # External object files for target simulator
 simulator_EXTERNAL_OBJECTS =
 
-simulator: CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o
-simulator: CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o
-simulator: CMakeFiles/simulator.dir/src/igrf.cpp.o
-simulator: CMakeFiles/simulator.dir/src/igrf_loader.cpp.o
-simulator: CMakeFiles/simulator.dir/src/iss_orbit.cpp.o
-simulator: CMakeFiles/simulator.dir/src/magnetic_field.cpp.o
 simulator: CMakeFiles/simulator.dir/src/main.cpp.o
-simulator: CMakeFiles/simulator.dir/src/ned2eci.cpp.o
-simulator: CMakeFiles/simulator.dir/src/ode4.cpp.o
 simulator: CMakeFiles/simulator.dir/build.make
+simulator: libsim_core.a
 simulator: libcontrol_algorithm.a
-simulator: /usr/lib/x86_64-linux-gnu/libmatio.so
 simulator: CMakeFiles/simulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable simulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable simulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/simulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

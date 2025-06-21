@@ -1,4 +1,3 @@
-// include/adcs_hal.h
 #pragma once
 
 #ifdef __cplusplus
@@ -15,6 +14,7 @@ extern "C" {
     typedef struct {
         double wx, wy, wz;   ///< body‐rates (rad/s)
         double Bx, By, Bz;   ///< magnetic field in body frame (T)
+        double t;            ///< timestamp (s)
     } SensorReadings;
 
     /// Dipole commands the algorithm outputs each step

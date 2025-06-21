@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug/CMakeFiles /mnt/c/Users/ees00/Demo_Github/SatelliteSim/cmake-build-debug//CMakeFiles/progress.marks
@@ -130,6 +175,19 @@ control_algorithm/fast:
 .PHONY : control_algorithm/fast
 
 #=============================================================================
+# Target rules for targets named sim_core
+
+# Build rule for target.
+sim_core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sim_core
+.PHONY : sim_core
+
+# fast build rule for target.
+sim_core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/build
+.PHONY : sim_core/fast
+
+#=============================================================================
 # Target rules for targets named simulator
 
 # Build rule for target.
@@ -141,6 +199,19 @@ simulator: cmake_check_build_system
 simulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/build
 .PHONY : simulator/fast
+
+#=============================================================================
+# Target rules for targets named test_bfield
+
+# Build rule for target.
+test_bfield: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_bfield
+.PHONY : test_bfield
+
+# fast build rule for target.
+test_bfield/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/build
+.PHONY : test_bfield/fast
 
 firmware/control_algorithm.o: firmware/control_algorithm.cpp.o
 .PHONY : firmware/control_algorithm.o
@@ -171,7 +242,7 @@ src/adcs_hal_sim.o: src/adcs_hal_sim.cpp.o
 
 # target to build an object file
 src/adcs_hal_sim.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/adcs_hal_sim.cpp.o
 .PHONY : src/adcs_hal_sim.cpp.o
 
 src/adcs_hal_sim.i: src/adcs_hal_sim.cpp.i
@@ -179,7 +250,7 @@ src/adcs_hal_sim.i: src/adcs_hal_sim.cpp.i
 
 # target to preprocess a source file
 src/adcs_hal_sim.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/adcs_hal_sim.cpp.i
 .PHONY : src/adcs_hal_sim.cpp.i
 
 src/adcs_hal_sim.s: src/adcs_hal_sim.cpp.s
@@ -187,7 +258,7 @@ src/adcs_hal_sim.s: src/adcs_hal_sim.cpp.s
 
 # target to generate assembly for a file
 src/adcs_hal_sim.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/adcs_hal_sim.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/adcs_hal_sim.cpp.s
 .PHONY : src/adcs_hal_sim.cpp.s
 
 src/eulerseqns2.o: src/eulerseqns2.cpp.o
@@ -195,7 +266,7 @@ src/eulerseqns2.o: src/eulerseqns2.cpp.o
 
 # target to build an object file
 src/eulerseqns2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/eulerseqns2.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/eulerseqns2.cpp.o
 .PHONY : src/eulerseqns2.cpp.o
 
 src/eulerseqns2.i: src/eulerseqns2.cpp.i
@@ -203,7 +274,7 @@ src/eulerseqns2.i: src/eulerseqns2.cpp.i
 
 # target to preprocess a source file
 src/eulerseqns2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/eulerseqns2.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/eulerseqns2.cpp.i
 .PHONY : src/eulerseqns2.cpp.i
 
 src/eulerseqns2.s: src/eulerseqns2.cpp.s
@@ -211,7 +282,7 @@ src/eulerseqns2.s: src/eulerseqns2.cpp.s
 
 # target to generate assembly for a file
 src/eulerseqns2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/eulerseqns2.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/eulerseqns2.cpp.s
 .PHONY : src/eulerseqns2.cpp.s
 
 src/igrf.o: src/igrf.cpp.o
@@ -219,7 +290,7 @@ src/igrf.o: src/igrf.cpp.o
 
 # target to build an object file
 src/igrf.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf.cpp.o
 .PHONY : src/igrf.cpp.o
 
 src/igrf.i: src/igrf.cpp.i
@@ -227,7 +298,7 @@ src/igrf.i: src/igrf.cpp.i
 
 # target to preprocess a source file
 src/igrf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf.cpp.i
 .PHONY : src/igrf.cpp.i
 
 src/igrf.s: src/igrf.cpp.s
@@ -235,7 +306,7 @@ src/igrf.s: src/igrf.cpp.s
 
 # target to generate assembly for a file
 src/igrf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf.cpp.s
 .PHONY : src/igrf.cpp.s
 
 src/igrf_loader.o: src/igrf_loader.cpp.o
@@ -243,7 +314,7 @@ src/igrf_loader.o: src/igrf_loader.cpp.o
 
 # target to build an object file
 src/igrf_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf_loader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf_loader.cpp.o
 .PHONY : src/igrf_loader.cpp.o
 
 src/igrf_loader.i: src/igrf_loader.cpp.i
@@ -251,7 +322,7 @@ src/igrf_loader.i: src/igrf_loader.cpp.i
 
 # target to preprocess a source file
 src/igrf_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf_loader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf_loader.cpp.i
 .PHONY : src/igrf_loader.cpp.i
 
 src/igrf_loader.s: src/igrf_loader.cpp.s
@@ -259,7 +330,7 @@ src/igrf_loader.s: src/igrf_loader.cpp.s
 
 # target to generate assembly for a file
 src/igrf_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/igrf_loader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/igrf_loader.cpp.s
 .PHONY : src/igrf_loader.cpp.s
 
 src/iss_orbit.o: src/iss_orbit.cpp.o
@@ -267,7 +338,7 @@ src/iss_orbit.o: src/iss_orbit.cpp.o
 
 # target to build an object file
 src/iss_orbit.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/iss_orbit.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/iss_orbit.cpp.o
 .PHONY : src/iss_orbit.cpp.o
 
 src/iss_orbit.i: src/iss_orbit.cpp.i
@@ -275,7 +346,7 @@ src/iss_orbit.i: src/iss_orbit.cpp.i
 
 # target to preprocess a source file
 src/iss_orbit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/iss_orbit.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/iss_orbit.cpp.i
 .PHONY : src/iss_orbit.cpp.i
 
 src/iss_orbit.s: src/iss_orbit.cpp.s
@@ -283,7 +354,7 @@ src/iss_orbit.s: src/iss_orbit.cpp.s
 
 # target to generate assembly for a file
 src/iss_orbit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/iss_orbit.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/iss_orbit.cpp.s
 .PHONY : src/iss_orbit.cpp.s
 
 src/magnetic_field.o: src/magnetic_field.cpp.o
@@ -291,7 +362,7 @@ src/magnetic_field.o: src/magnetic_field.cpp.o
 
 # target to build an object file
 src/magnetic_field.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/magnetic_field.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/magnetic_field.cpp.o
 .PHONY : src/magnetic_field.cpp.o
 
 src/magnetic_field.i: src/magnetic_field.cpp.i
@@ -299,7 +370,7 @@ src/magnetic_field.i: src/magnetic_field.cpp.i
 
 # target to preprocess a source file
 src/magnetic_field.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/magnetic_field.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/magnetic_field.cpp.i
 .PHONY : src/magnetic_field.cpp.i
 
 src/magnetic_field.s: src/magnetic_field.cpp.s
@@ -307,7 +378,7 @@ src/magnetic_field.s: src/magnetic_field.cpp.s
 
 # target to generate assembly for a file
 src/magnetic_field.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/magnetic_field.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/magnetic_field.cpp.s
 .PHONY : src/magnetic_field.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -339,7 +410,7 @@ src/ned2eci.o: src/ned2eci.cpp.o
 
 # target to build an object file
 src/ned2eci.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ned2eci.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ned2eci.cpp.o
 .PHONY : src/ned2eci.cpp.o
 
 src/ned2eci.i: src/ned2eci.cpp.i
@@ -347,7 +418,7 @@ src/ned2eci.i: src/ned2eci.cpp.i
 
 # target to preprocess a source file
 src/ned2eci.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ned2eci.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ned2eci.cpp.i
 .PHONY : src/ned2eci.cpp.i
 
 src/ned2eci.s: src/ned2eci.cpp.s
@@ -355,7 +426,7 @@ src/ned2eci.s: src/ned2eci.cpp.s
 
 # target to generate assembly for a file
 src/ned2eci.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ned2eci.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ned2eci.cpp.s
 .PHONY : src/ned2eci.cpp.s
 
 src/ode4.o: src/ode4.cpp.o
@@ -363,7 +434,7 @@ src/ode4.o: src/ode4.cpp.o
 
 # target to build an object file
 src/ode4.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ode4.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ode4.cpp.o
 .PHONY : src/ode4.cpp.o
 
 src/ode4.i: src/ode4.cpp.i
@@ -371,7 +442,7 @@ src/ode4.i: src/ode4.cpp.i
 
 # target to preprocess a source file
 src/ode4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ode4.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ode4.cpp.i
 .PHONY : src/ode4.cpp.i
 
 src/ode4.s: src/ode4.cpp.s
@@ -379,8 +450,56 @@ src/ode4.s: src/ode4.cpp.s
 
 # target to generate assembly for a file
 src/ode4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulator.dir/build.make CMakeFiles/simulator.dir/src/ode4.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/ode4.cpp.s
 .PHONY : src/ode4.cpp.s
+
+src/test_bfield.o: src/test_bfield.cpp.o
+.PHONY : src/test_bfield.o
+
+# target to build an object file
+src/test_bfield.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/src/test_bfield.cpp.o
+.PHONY : src/test_bfield.cpp.o
+
+src/test_bfield.i: src/test_bfield.cpp.i
+.PHONY : src/test_bfield.i
+
+# target to preprocess a source file
+src/test_bfield.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/src/test_bfield.cpp.i
+.PHONY : src/test_bfield.cpp.i
+
+src/test_bfield.s: src/test_bfield.cpp.s
+.PHONY : src/test_bfield.s
+
+# target to generate assembly for a file
+src/test_bfield.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bfield.dir/build.make CMakeFiles/test_bfield.dir/src/test_bfield.cpp.s
+.PHONY : src/test_bfield.cpp.s
+
+src/vendor_timer_stub.o: src/vendor_timer_stub.cpp.o
+.PHONY : src/vendor_timer_stub.o
+
+# target to build an object file
+src/vendor_timer_stub.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/vendor_timer_stub.cpp.o
+.PHONY : src/vendor_timer_stub.cpp.o
+
+src/vendor_timer_stub.i: src/vendor_timer_stub.cpp.i
+.PHONY : src/vendor_timer_stub.i
+
+# target to preprocess a source file
+src/vendor_timer_stub.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/vendor_timer_stub.cpp.i
+.PHONY : src/vendor_timer_stub.cpp.i
+
+src/vendor_timer_stub.s: src/vendor_timer_stub.cpp.s
+.PHONY : src/vendor_timer_stub.s
+
+# target to generate assembly for a file
+src/vendor_timer_stub.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_core.dir/build.make CMakeFiles/sim_core.dir/src/vendor_timer_stub.cpp.s
+.PHONY : src/vendor_timer_stub.cpp.s
 
 # Help Target
 help:
@@ -389,9 +508,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... control_algorithm"
+	@echo "... sim_core"
 	@echo "... simulator"
+	@echo "... test_bfield"
 	@echo "... firmware/control_algorithm.o"
 	@echo "... firmware/control_algorithm.i"
 	@echo "... firmware/control_algorithm.s"
@@ -422,6 +547,12 @@ help:
 	@echo "... src/ode4.o"
 	@echo "... src/ode4.i"
 	@echo "... src/ode4.s"
+	@echo "... src/test_bfield.o"
+	@echo "... src/test_bfield.i"
+	@echo "... src/test_bfield.s"
+	@echo "... src/vendor_timer_stub.o"
+	@echo "... src/vendor_timer_stub.i"
+	@echo "... src/vendor_timer_stub.s"
 .PHONY : help
 
 

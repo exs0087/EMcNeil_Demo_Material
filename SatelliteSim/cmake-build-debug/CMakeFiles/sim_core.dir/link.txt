@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsim_core.a CMakeFiles/sim_core.dir/src/adcs_hal_sim.cpp.o CMakeFiles/sim_core.dir/src/eulerseqns2.cpp.o CMakeFiles/sim_core.dir/src/igrf.cpp.o CMakeFiles/sim_core.dir/src/igrf_loader.cpp.o CMakeFiles/sim_core.dir/src/iss_orbit.cpp.o CMakeFiles/sim_core.dir/src/magnetic_field.cpp.o CMakeFiles/sim_core.dir/src/ned2eci.cpp.o CMakeFiles/sim_core.dir/src/ode4.cpp.o CMakeFiles/sim_core.dir/src/vendor_timer_stub.cpp.o
+/usr/bin/ranlib libsim_core.a

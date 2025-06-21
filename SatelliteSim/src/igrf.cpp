@@ -1,121 +1,145 @@
 // src/igrf.cpp
 
-#include "igrf.h"              // declares Vec3 igrf(...) and loadIGRFCoeffs(...)
+#include "igrf.h"            // declares Vec3, geodeticToGeocentric(), computeSphericalField(), igrf()
+#include "igrf_loader.h"     // loadIGRFCoeffs()
 #include <cmath>
-#include <stdexcept>
-#include <vector>              // for std::vector
-#include <string>              // for std::string_view if you switch
+#include <tuple>
 
-static constexpr double pi      = 3.141592653589793;
-static constexpr double deg2rad = pi/180.0;
-static constexpr double rad2deg = 180.0/pi;
-static constexpr double Re_km   = 6371.2;      // IGRF reference radius [km]
+// Reference radius for IGRF (km)
+static constexpr double Re_IGRF = 6371.2;
 
-Vec3 igrf(double time,      // decimal year
-          double latRad,    // geodetic latitude [rad]
-          double lonRad,    // geodetic longitude [rad]
-          double altM,      // altitude [m]
-          const std::string& coord /*="geodetic"*/)
+// WGS-84 ellipsoid constants (km)
+static constexpr double a_ell = 6378.137;
+static constexpr double f_ell = 1.0/298.257223563;
+static constexpr double b_ell = a_ell*(1 - f_ell);
+
+//------------------------------------------------------------------------------
+// Convert geodetic (lat,lon,alt) → geocentric spherical (r,θ,φ)
+//   lat,lon in radians; alt in km
+// Outputs:
+//   r_km      – radius from Earth center [km]
+//   cos_theta – cos(colatitude) = z/r
+//   sin_theta – sin(colatitude)
+//------------------------------------------------------------------------------
+void geodeticToGeocentric(double lat_rad,
+                          double lon_rad,
+                          double alt_km,
+                          double &r_km,
+                          double &cos_theta,
+                          double &sin_theta)
 {
-    // 1) Convert units
-    double altKm = altM * 1e-3;
-    double latDeg = latRad * rad2deg;
-    double lonDeg = lonRad * rad2deg;
+    double lat_deg   = lat_rad * 180.0/M_PI;
+    double costheta0 = std::cos((90.0 - lat_deg) * M_PI/180.0);
+    double sintheta0 = std::sin((90.0 - lat_deg) * M_PI/180.0);
 
-    // 2) Geodetic ↔ Geocentric conversion
-    const double a = 6378.137, f = 1.0/298.257223563;
-    const double b = a * (1 - f);
+    double rho = std::hypot(a_ell * sintheta0,
+                            b_ell * costheta0);
 
-    double costheta = std::cos((90.0 - latDeg) * deg2rad);
-    double sintheta = std::sin((90.0 - latDeg) * deg2rad);
-    double cd = 1.0, sd = 0.0, r;
+    r_km = std::sqrt(
+        alt_km*alt_km
+      + 2.0*alt_km*rho
+      + ((a_ell*a_ell*a_ell*a_ell)*sintheta0*sintheta0
+       + (b_ell*b_ell*b_ell*b_ell)*costheta0*costheta0) / (rho*rho)
+    );
 
-    if (coord == "geodetic") {
-        double rho = std::hypot(a * sintheta, b * costheta);
-        r = std::sqrt(altKm*altKm
-                    + 2*altKm*rho
-                    + (a*a*sintheta*sintheta + b*b*costheta*costheta)/(rho*rho));
-        cd = (altKm + rho) / r;
-        sd = ((a*a - b*b) / rho) * costheta * sintheta / r;
-        // update costheta/sintheta
-        double old = costheta;
-        costheta = costheta*cd - sintheta*sd;
-        sintheta = old*sd     + sintheta*cd;
-    }
-    else if (coord == "geocentric") {
-        r = altKm;
-    }
-    else {
-        throw std::invalid_argument("igrf: invalid coord flag");
-    }
+    double cd = (alt_km + rho) / r_km;
+    double sd = ((a_ell*a_ell - b_ell*b_ell) / rho) * (costheta0*sintheta0) / r_km;
 
-    // 3) Load & interpolate the g/h coefficients
-    auto gh = loadIGRFCoeffs(time);
+    cos_theta = costheta0*cd - sintheta0*sd;
+    sin_theta = sintheta0*cd + costheta0*sd;
+}
+
+//------------------------------------------------------------------------------
+// Compute the spherical-harmonic magnetic field at radius r_km, colatitude
+// theta_rad, longitude phi_rad, using the flat GH coefficient vector.
+// Returns (Br [nT], Bt [nT], Bp [nT]) in the spherical basis.
+//------------------------------------------------------------------------------
+std::tuple<double,double,double>
+computeSphericalField(double r_km,
+                      double theta_rad,
+                      double phi_rad,
+                      const std::vector<double> &gh)
+{
+    // derive maximum degree nmax
     int nmax = static_cast<int>(std::sqrt(gh.size() + 1) - 1);
 
-    // 4) Precompute longitude terms
-    std::vector<double> cosphi(nmax+1), sinphi(nmax+1);
-    for (int m = 0; m <= nmax; ++m) {
-        cosphi[m] = std::cos(m * lonRad);
-        sinphi[m] = std::sin(m * lonRad);
-    }
+    // precompute sin/cos of colatitude & longitude
+    double ct = std::cos(theta_rad), st = std::sin(theta_rad);
+    double pr = Re_IGRF / r_km;
 
-    // 5) Build Schmidt‐normalized Legendre & derivative arrays
-    int Psize = (nmax+1)*(nmax+2)/2;
-    std::vector<double> P(Psize), dP(Psize);
-    P[0] = 1.0;
-    dP[0] = 0.0;
+    // storage for P(n,m) and dP(n,m)
+    std::vector<std::vector<double>> P(nmax+1, std::vector<double>(nmax+1, 0.0));
+    std::vector<std::vector<double>> dP(nmax+1, std::vector<double>(nmax+1, 0.0));
+
+    // initial
+    P[0][0] = 1.0;
+    dP[0][0] = 0.0;
+
+    // build associated Legendre
     for (int n = 1; n <= nmax; ++n) {
         for (int m = 0; m <= n; ++m) {
-            int idx = n*(n+1)/2 + m;
             if (n == m) {
-                double fac = std::sqrt(1.0 - 1.0/(2.0*n));
-                P[idx]  = fac * sintheta * P[idx - n - 1];
-                dP[idx] = fac * (sintheta * dP[idx - n - 1]
-                               + costheta * P[idx - n - 1]);
-            } else {
-                double k1 = (2.0*n - 1) / std::sqrt(n*n - m*m);
-                double k2 = std::sqrt(((n-1.0)*(n-1.0) - m*m)/(n*n - m*m));
-                P[idx]  = k1*(costheta*P[idx-n] - sintheta*P[idx-2*n-1])
-                         - k2 * P[idx-2*n-1];
-                dP[idx] = k1*(costheta*dP[idx-n] - sintheta*dP[idx-2*n-1])
-                         - k2 * dP[idx-2*n-1];
+                double k = std::sqrt(1.0 - 1.0/(2.0*n));
+                P[n][m]   = k * st * P[n-1][m-1];
+                dP[n][m]  = k * (ct * P[n-1][m-1] + st * dP[n-1][m-1]);
+            }
+            else if (n == 1 && m == 0) {
+                P[n][m]   = ct * P[n-1][m];
+                dP[n][m]  = -st * P[n-1][m] + ct * dP[n-1][m];
+            }
+            else {
+                double a = ((2.0*n - 1.0)/(n - m));
+                double b = ((n + m - 1.0)/(n - m));
+                P[n][m]   = a * ct * P[n-1][m] - b * P[n-2][m];
+                dP[n][m]  = a * (ct * dP[n-1][m] - st * P[n-1][m])
+                          - b * dP[n-2][m];
             }
         }
     }
 
-    // 6) Spherical‐harmonic summation
     double Br = 0.0, Bt = 0.0, Bp = 0.0;
-    double ar = std::pow(Re_km / r, 2);
-    int coeffIdx = 0;
+    int idx = 0;
     for (int n = 1; n <= nmax; ++n) {
-        ar *= (Re_km / r);  // now (Re/r)^(n+2)
+        double ar = std::pow(pr, n+2);
         for (int m = 0; m <= n; ++m) {
-            double gnm = gh[coeffIdx++];
-            double hnm = (m > 0 ? gh[coeffIdx++] : 0.0);
-            int idx  = n*(n+1)/2 + m;
-            double term = gnm*cosphi[m] + hnm*sinphi[m];
+            double gnm = gh[idx++];
+            double hnm = (m>0 ? gh[idx++] : 0.0);
+            double cosm = std::cos(m*phi_rad);
+            double sinm = std::sin(m*phi_rad);
+            double coeff = gnm * cosm + hnm * sinm;
 
-            Br += ar * (n+1) * term * P[idx];
-            Bt -= ar * term * dP[idx];
-            if (m > 0) {
-                // handle the 1/sintheta vs dP case
-                double fac = (sintheta != 0.0 ? P[idx] : dP[idx]) / (sintheta != 0.0 ? sintheta : 1.0);
-                Bp -= ar * m * ( -gnm*sinphi[m] + hnm*cosphi[m] ) * fac;
+            Br += (n+1) * ar * coeff * P[n][m];
+            Bt -= ar * coeff * dP[n][m];
+            if (m>0) {
+                double coeff2 = -gnm * sinm + hnm * cosm;
+                Bp += ar * (m * coeff2 * P[n][m] / st);
             }
         }
     }
 
-    // 7) Convert spherical->NED & apply geodetic correction
-    double Bn = -Bt;
-    double Be =  Bp;
-    double Bd = -Br;
+    return {Br, Bt, Bp};
+}
 
-    double oldBn = Bn;
-    Bn = Bn*cd + Bd*sd;
-    Bd = Bd*cd - oldBn*sd;
+//------------------------------------------------------------------------------
+// Main IGRF entry: geodetic→NED magnetic field [nT].
+//------------------------------------------------------------------------------
+Vec3 igrf(double time,
+          double lat_rad,
+          double lon_rad,
+          double alt_km,
+          const std::string & /*coord*/)
+{
+    double r_km, cos_theta, sin_theta;
+    geodeticToGeocentric(lat_rad, lon_rad, alt_km,
+                         r_km, cos_theta, sin_theta);
 
-    // 8) Convert nT -> T
-    constexpr double nT2T = 1e-9;
-    return Vec3{ Bn * nT2T, Be * nT2T, Bd * nT2T };
+    double theta = std::atan2(sin_theta, cos_theta);
+    double phi   = lon_rad;
+
+    auto gh = loadIGRFCoeffs(time);
+    auto [Br, Bt, Bp] = computeSphericalField(r_km, theta, phi, gh);
+
+    return Vec3{ -Bt,   // north
+                  Bp,   // east
+                 -Br }; // down
 }

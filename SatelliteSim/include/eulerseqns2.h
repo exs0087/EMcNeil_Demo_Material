@@ -1,19 +1,22 @@
 #pragma once
 
-#include "Vec7.h"
-#include "adcs_hal.h"    // for SensorReadings, ActuatorCommands
 #include <vector>
+#include "adcs_hal.h"   // for ActuatorCommands
+#include "Vec7.h"
 
-/**
- * Computes the time‐derivative for the 7‐element state vector:
- *   [ ω₁, ω₂, ω₃, q₁, q₂, q₃, q₄ ]
- * Implements rigid‐body Euler + quaternion kinematics and calls into
- * the on‐board controller via the HAL.
- */
-Vec7 eulerseqns2(double t, const Vec7& y);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-/// Get the history of actuator commands (one entry per top‐level time‐step).
-const std::vector<ActuatorCommands>& getActHistory();
+    /// Dynamics + control call (RK4 integrates this)
+    Vec7 eulerseqns2(double t, const Vec7& y);
 
-/// Clear out any previously recorded actuator history (call before each run).
-void resetActHistory();
+    /// Retrieve the one‐per‐step actuator history (after RK4)
+    const std::vector<ActuatorCommands>& getActHistory();
+
+    /// **NEW**: Reset the history & call count before a fresh run
+    void clearActHistory();
+
+#ifdef __cplusplus
+}
+#endif

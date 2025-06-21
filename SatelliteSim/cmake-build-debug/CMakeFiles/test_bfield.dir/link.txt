@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/test_bfield.dir/src/test_bfield.cpp.o -o test_bfield  libsim_core.a libcontrol_algorithm.a 

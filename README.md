@@ -31,6 +31,11 @@ This repository showcases a collection of advanced aerospace guidance, navigatio
 - **Description**: Simulates Earth’s magnetic field and uses a magnetorquer to despin a satellite in LEO.
 - **Focus**: B-dot controller, magnetic moment interaction, de-spin strategy.
 
+### ⚙️ Golf-Ball Trajectory State Estimation Suite
+- **Tools**: MATLAB
+- **Description**: Demo comparing five filters—LUMVE, KF, EKF, UKF, and Particle Filter—on noisy golf-ball putt measurements. Includes true-trajectory ODE integration and error analysis.
+- **Key Concepts**: filter comparison, parameter tuning, Monte Carlo analysis
+
 ### ⚙️ SatelliteSim – Python & C++ 
 - **Tools**: Python, C++, CMake
 - **Description**: Ongoing port of legacy MATLAB-based spacecraft control architecture into modern C++/Python for embedded or simulation applications.
@@ -101,11 +106,13 @@ Python and OpenMDAO examples showcasing optimization fundamentals:
 EMcNeil_Demo_Material/
 │
 ├── Apollo_11_Final_Approach_EKF_UKF_ParticleFilter_TradeStudy/
+├── Golfball_State_Estimation_KF_EKF_UKF_Particle/
 ├── SatelliteSim/
 ├── Satellite_Attitude_Optimal_Estimation_MEKFilter__3-axis_Gyroscopes/
 ├── Satellite_Attitude_PD_Controller__with_Reaction_Wheels/
 ├── Satellite_LEO_Magnetorquer_Despin_Controller/
 └── Supersonic_Fixed-wing_Aircraft_Trajectory_Optimization/
+└── star_tracker/
 ├── orbital_mechanics_simulations_and_analysis_tools/
 │   ├── Atmospheric_Drag_Pass_Mars/
 │   ├── Earth-Moon_Lagrange_Points_DeltaV_Jacobi/
@@ -127,7 +134,7 @@ EMcNeil_Demo_Material/
 │   ├── projectile_optimization.py
 │   └── warm_start_strategies.py
 │
-└── README_EMcNeil_Demo_Material.md
+└── README.md
 ```
 
 ---

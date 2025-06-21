@@ -127,5 +127,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/control_algorithm.dir/DependInfo.cmake"
+  "CMakeFiles/sim_core.dir/DependInfo.cmake"
   "CMakeFiles/simulator.dir/DependInfo.cmake"
+  "CMakeFiles/test_bfield.dir/DependInfo.cmake"
   )

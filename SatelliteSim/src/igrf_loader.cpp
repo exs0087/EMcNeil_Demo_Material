@@ -1,69 +1,106 @@
 // src/igrf_loader.cpp
 #include "igrf.h"
-#include <matio.h>
-#include <vector>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 #include <stdexcept>
-#include <cstdlib>
 
-// Path to the .mat file (hard-coded or could be made configurable)
-static constexpr const char* IGRF_COEFS_PATH =
-    "data/igrfcoefs.mat";
+static constexpr const char* YEARS_CSV = "data/years.csv";
+static constexpr const char* GH_CSV    = "data/gh.csv";
 
 std::vector<double> loadIGRFCoeffs(double decimalYear) {
-    mat_t* matfp = Mat_Open(IGRF_COEFS_PATH, MAT_ACC_RDONLY);
-    if (!matfp) throw std::runtime_error(
-        std::string("Unable to open ") + IGRF_COEFS_PATH);
+    static bool loaded = false;
+    static std::vector<double> years;
+    static std::vector<std::vector<double>> gh;
 
-    matvar_t* coefsVar = Mat_VarRead(matfp, "coefs");
-    if (!coefsVar) {
-        Mat_Close(matfp);
-        throw std::runtime_error("Missing 'coefs' in .mat file");
+    if (!loaded) {
+        // --- Load years ---
+        std::ifstream fy(YEARS_CSV);
+        if (!fy.is_open()) {
+            throw std::runtime_error(std::string("Unable to open ") + YEARS_CSV);
+        }
+        std::string line;
+        while (std::getline(fy, line)) {
+            if (line.empty()) continue;
+            try {
+                years.push_back(std::stod(line));
+            } catch (...) {
+                throw std::runtime_error("Invalid entry in years.csv: '" + line + "'");
+            }
+        }
+        fy.close();
+
+        // --- Load GH matrix ---
+        std::ifstream fg(GH_CSV);
+        if (!fg.is_open()) {
+            throw std::runtime_error(std::string("Unable to open ") + GH_CSV);
+        }
+        size_t row = 0, expectedCols = 0;
+        while (std::getline(fg, line)) {
+            if (line.empty()) { ++row; continue; }
+            std::vector<double> rowVals;
+            std::stringstream ss(line);
+            std::string cell;
+            while (std::getline(ss, cell, ',')) {
+                if (cell.empty()) continue;
+                try {
+                    rowVals.push_back(std::stod(cell));
+                } catch (...) {
+                    throw std::runtime_error(
+                        "Invalid number in gh.csv at row " +
+                        std::to_string(row) + ": '" + cell + "'");
+                }
+            }
+            if (row == 0) {
+                expectedCols = rowVals.size();
+            } else if (rowVals.size() != expectedCols) {
+                throw std::runtime_error(
+                    "gh.csv row " + std::to_string(row) +
+                    " has " + std::to_string(rowVals.size()) +
+                    " columns; expected " + std::to_string(expectedCols));
+            }
+            gh.push_back(std::move(rowVals));
+            ++row;
+        }
+        fg.close();
+
+        if (years.size() != gh.size()) {
+            throw std::runtime_error(
+                "years.csv (" + std::to_string(years.size()) +
+                " rows) and gh.csv (" + std::to_string(gh.size()) +
+                " rows) must have the same number of entries");
+        }
+
+        std::cerr << "[igrf_loader] loaded "
+                  << years.size() << " epochs, "
+                  << "GH vector length = " << expectedCols
+                  << std::endl;
+
+        loaded = true;
     }
 
-    size_t nEpochs = coefsVar->dims[1];
-    matvar_t* yearsVar = Mat_VarGetStructFieldByName(coefsVar, "year", 0);
-    matvar_t* ghVar    = Mat_VarGetStructFieldByName(coefsVar, "gh",   0);
-    matvar_t* slopeVar = Mat_VarGetStructFieldByName(coefsVar, "slope",0);
-    if (!yearsVar || !ghVar || !slopeVar) {
-        Mat_VarFree(coefsVar);
-        Mat_Close(matfp);
-        throw std::runtime_error("Missing fields in coefs struct");
-    }
+    // --- Interpolate ---
+    size_t n = years.size();
+    if (decimalYear <= years.front())   return gh.front();
+    if (decimalYear >= years.back())    return gh.back();
 
-    // Read years into vector
-    std::vector<double> years(nEpochs);
-    auto yearData = static_cast<double*>(yearsVar->data);
-    for (size_t i = 0; i < nEpochs; ++i) {
-        years[i] = yearData[i] + 10.0;
-    }
-
-    // Find bracketing epochs
+    // find bracketing indices
     size_t last = 0;
-    while (last + 1 < nEpochs && years[last + 1] <= decimalYear) ++last;
-    size_t next = std::min(last + 1, nEpochs - 1);
-
-    // Extract GH vectors
-    auto ghAll    = static_cast<double*>(ghVar->data);
-    size_t vectorLen = ghVar->dims[0];
-    std::vector<double> lastGH(vectorLen), nextGH(vectorLen);
-    for (size_t i = 0; i < vectorLen; ++i) {
-        lastGH[i] = ghAll[i + last * vectorLen];
-        nextGH[i] = ghAll[i + next * vectorLen];
+    while (last + 1 < n && years[last + 1] <= decimalYear) {
+        ++last;
     }
+    size_t next = last + 1;
 
-    // Linear interpolation
-    double dt = years[next] - years[last];
-    std::vector<double> result(vectorLen);
-    for (size_t i = 0; i < vectorLen; ++i) {
-        double slope = dt != 0.0
-                     ? (nextGH[i] - lastGH[i]) / dt
-                     : 0.0;
-        result[i] = lastGH[i] + slope * (decimalYear - years[last]);
+    double t0 = years[last], t1 = years[next];
+    double frac = (decimalYear - t0) / (t1 - t0);
+
+    const auto& v0 = gh[last];
+    const auto& v1 = gh[next];
+    size_t len = v0.size();
+    std::vector<double> result(len);
+    for (size_t i = 0; i < len; ++i) {
+        result[i] = v0[i] + (v1[i] - v0[i]) * frac;
     }
-
-    // **Fixed cleanup: only free the top‐level struct**
-    Mat_VarFree(coefsVar);
-    Mat_Close(matfp);
 
     return result;
 }

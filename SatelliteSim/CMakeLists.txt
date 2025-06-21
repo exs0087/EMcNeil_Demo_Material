@@ -1,60 +1,57 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 project(SatelliteSim LANGUAGES C CXX)
 
-# 1) Require C++17
-set(CMAKE_CXX_STANDARD      17)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#
-# 2) Build your on-board control algorithm as a static lib
-#
-add_library(control_algorithm STATIC
-        firmware/control_algorithm.cpp
-)
-target_include_directories(control_algorithm PUBLIC
-        ${PROJECT_SOURCE_DIR}/include    # for adcs_hal.h, control_algorithm.h
-        ${PROJECT_SOURCE_DIR}/firmware   # for control_algorithm.h
+# ------------------------------------------------------------
+# Include directories
+include_directories(
+        ${CMAKE_SOURCE_DIR}/include   # your headers (e.g. iss_orbit.h)
+        ${CMAKE_SOURCE_DIR}/firmware
 )
 
-#
-# 3) Build the simulator executable
-#
-add_executable(simulator
+# ------------------------------------------------------------
+# control_algorithm static lib
+add_library(control_algorithm
+        firmware/control_algorithm.cpp
+)
+
+# ------------------------------------------------------------
+# Core simulation library
+add_library(sim_core
         src/adcs_hal_sim.cpp
         src/eulerseqns2.cpp
         src/igrf.cpp
         src/igrf_loader.cpp
-        src/iss_orbit.cpp
+        src/iss_orbit.cpp        # only the .cpp, not the .h!
         src/magnetic_field.cpp
-        src/main.cpp
         src/ned2eci.cpp
         src/ode4.cpp
+        src/vendor_timer_stub.cpp
 )
-target_compile_definitions(simulator PRIVATE
-        OUTPUT_DIR=\"${PROJECT_SOURCE_DIR}/Test_Setup/cpp\"
-)
-target_include_directories(simulator PRIVATE
-        ${PROJECT_SOURCE_DIR}/include    # for all our public headers
-)
-target_link_libraries(simulator PRIVATE
-        control_algorithm                # hook in the firmware lib
-)
+target_link_libraries(sim_core PUBLIC control_algorithm)
 
-#
-# 4) Locate and link libmatio (no pkg-config)
-#
-find_library(MATIO_LIB matio
-        HINTS /usr/lib /usr/local/lib
+# ------------------------------------------------------------
+# Simulator executable
+add_executable(simulator
+        src/main.cpp
 )
-find_path(MATIO_INC matio.h
-        HINTS /usr/include /usr/local/include
+target_link_libraries(simulator PRIVATE sim_core)
+
+# ------------------------------------------------------------
+# Test executable
+add_executable(test_bfield
+        src/test_bfield.cpp
 )
-if(NOT MATIO_LIB OR NOT MATIO_INC)
-    message(FATAL_ERROR "libmatio not found; install libmatio-dev and retry")
+target_link_libraries(test_bfield PRIVATE sim_core)
+
+# ------------------------------------------------------------
+# Allow overriding T_FINAL at configure time
+if (DEFINED T_FINAL)
+    target_compile_definitions(simulator PRIVATE T_FINAL=${T_FINAL})
 endif()
 
-target_include_directories(simulator PRIVATE ${MATIO_INC})
-target_link_libraries(simulator      PRIVATE ${MATIO_LIB})
-
-# On Unix we also need the math library
-target_link_libraries(simulator      PRIVATE m)
+# ------------------------------------------------------------
+# Install rules (optional)
+install(TARGETS simulator DESTINATION bin)
